@@ -622,7 +622,7 @@ impl<'a> DownloadRequestBuilder<'a> {
     }
 
     /// Dispatch the request and return the response
-    async fn send(self) -> crate::Result<reqwest::Response> {
+    pub async fn send(self) -> crate::Result<reqwest::Response> {
         let headers = self.gcs_client.get_headers().await?;
         let mut builder = self.gcs_client.client.get(self.url).headers(headers);
 
