@@ -1,6 +1,6 @@
 [package]
 name = "cloud-storage"
-version = "0.11.1"
+version = "0.12.0"
 authors = ["Luuk Wester <luuk.wester@gmail.com>"]
 edition = "2018"
 description = "A crate for uploading files to Google cloud storage, and for generating download urls."
@@ -11,6 +11,7 @@ keywords = ["google", "cloud", "storage"]
 readme = "README.md"
 categories = ["api-bindings", "web-programming"]
 resolver = "2"
+publish = ["decthings-ab"]
 # maintenance = { status = "actively-developed" }
 
 [features]
