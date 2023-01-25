@@ -237,7 +237,7 @@ mod tests {
         let bucket = crate::read_test_bucket().await;
         Object::create(
             &bucket.name,
-            vec![0, 1],
+            vec![0, 1].into(),
             "test-object-access-controls-create",
             "text/plain",
         )
@@ -261,7 +261,7 @@ mod tests {
         let bucket = crate::read_test_bucket().await;
         Object::create(
             &bucket.name,
-            vec![0, 1],
+            vec![0, 1].into(),
             "test-object-access-controls-list",
             "text/plain",
         )
@@ -277,7 +277,7 @@ mod tests {
         let bucket = crate::read_test_bucket().await;
         Object::create(
             &bucket.name,
-            vec![0, 1],
+            vec![0, 1].into(),
             "test-object-access-controls-read",
             "text/plain",
         )
@@ -311,7 +311,7 @@ mod tests {
             entity: Entity::AllUsers,
             role: Role::Reader,
         };
-        Object::create(&bucket.name, vec![0, 1], "test-update", "text/plain")
+        Object::create(&bucket.name, vec![0, 1].into(), "test-update", "text/plain")
             .await
             .unwrap();
         ObjectAccessControl::create(&bucket.name, "test-update", &new_bucket_access_control)
@@ -334,7 +334,7 @@ mod tests {
             entity: Entity::AllUsers,
             role: Role::Reader,
         };
-        Object::create(&bucket.name, vec![0, 1], "test-delete", "text/plain")
+        Object::create(&bucket.name, vec![0, 1].into(), "test-delete", "text/plain")
             .await
             .unwrap();
         ObjectAccessControl::create(&bucket.name, "test-delete", &new_bucket_access_control)
@@ -357,7 +357,7 @@ mod tests {
             let bucket = crate::read_test_bucket_sync();
             Object::create_sync(
                 &bucket.name,
-                vec![0, 1],
+                vec![0, 1].into(),
                 "test-object-access-controls-create",
                 "text/plain",
             )
@@ -379,7 +379,7 @@ mod tests {
             let bucket = crate::read_test_bucket_sync();
             Object::create_sync(
                 &bucket.name,
-                vec![0, 1],
+                vec![0, 1].into(),
                 "test-object-access-controls-list",
                 "text/plain",
             )
@@ -393,7 +393,7 @@ mod tests {
             let bucket = crate::read_test_bucket_sync();
             Object::create_sync(
                 &bucket.name,
-                vec![0, 1],
+                vec![0, 1].into(),
                 "test-object-access-controls-read",
                 "text/plain",
             )
@@ -424,7 +424,7 @@ mod tests {
                 entity: Entity::AllUsers,
                 role: Role::Reader,
             };
-            Object::create_sync(&bucket.name, vec![0, 1], "test-update", "text/plain").unwrap();
+            Object::create_sync(&bucket.name, vec![0, 1].into(), "test-update", "text/plain").unwrap();
             ObjectAccessControl::create_sync(
                 &bucket.name,
                 "test-update",
@@ -448,7 +448,7 @@ mod tests {
                 entity: Entity::AllUsers,
                 role: Role::Reader,
             };
-            Object::create_sync(&bucket.name, vec![0, 1], "test-delete", "text/plain").unwrap();
+            Object::create_sync(&bucket.name, vec![0, 1].into(), "test-delete", "text/plain").unwrap();
             ObjectAccessControl::create_sync(
                 &bucket.name,
                 "test-delete",

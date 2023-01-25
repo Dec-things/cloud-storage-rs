@@ -28,7 +28,7 @@ impl<'a> ObjectClient<'a> {
     pub fn create(
         &self,
         bucket: &str,
-        file: Vec<u8>,
+        file: bytes::Bytes,
         filename: &str,
         mime_type: &str,
     ) -> crate::Result<Object> {
@@ -115,7 +115,7 @@ impl<'a> ObjectClient<'a> {
     /// # Ok(())
     /// # }
     /// ```
-    pub fn download(&self, bucket: &str, file_name: &str) -> crate::Result<Vec<u8>> {
+    pub fn download(&self, bucket: &str, file_name: &str) -> crate::Result<bytes::Bytes> {
         self.0
             .runtime
             .block_on(self.0.client.object().download(bucket, file_name))

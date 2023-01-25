@@ -28,14 +28,14 @@ impl<'a> ObjectClient<'a> {
     ///
     /// let file: Vec<u8> = read_cute_cat("cat.png");
     /// let client = Client::default();
-    /// client.object().create("cat-photos", file, "recently read cat.png", "image/png").await?;
+    /// client.object().create("cat-photos", file.into(), "recently read cat.png", "image/png").await?;
     /// # Ok(())
     /// # }
     /// ```
     pub async fn create(
         &self,
         bucket: &str,
-        file: Vec<u8>,
+        file: bytes::Bytes,
         filename: &str,
         mime_type: &str,
     ) -> crate::Result<Object> {
@@ -275,9 +275,9 @@ impl<'a> ObjectClient<'a> {
     /// # Ok(())
     /// # }
     /// ```
-    pub async fn download(&self, bucket: &str, file_name: &str) -> crate::Result<Vec<u8>> {
+    pub async fn download(&self, bucket: &str, file_name: &str) -> crate::Result<bytes::Bytes> {
         let resp = self.download_request(bucket, file_name);
-        Ok(resp.bytes().await?.to_vec())
+        Ok(resp.bytes().await?)
     }
 
     /// Download the content of the object with the specified name in the specified bucket, without
