@@ -34,6 +34,25 @@ pub trait TokenCache: Sync {
     async fn fetch_token(&self, client: &reqwest::Client) -> crate::Result<(String, u64)>;
 }
 
+#[async_trait::async_trait]
+impl<T: TokenCache> TokenCache for &T {
+    async fn token_and_exp(&self) -> Option<(String, u64)> {
+        T::token_and_exp(self).await
+    }
+
+    async fn set_token(&self, token: String, exp: u64) -> crate::Result<()> {
+        T::set_token(self, token, exp).await
+    }
+
+    async fn scope(&self) -> String {
+        T::scope(self).await
+    }
+
+    async fn fetch_token(&self, client: &reqwest::Client) -> crate::Result<(String, u64)> {
+        T::fetch_token(self, client).await
+    }
+}
+
 #[derive(serde::Serialize)]
 struct Claims {
     iss: String,
