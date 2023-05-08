@@ -1,4 +1,5 @@
 target
+rls-target
 Cargo.lock
 .env
 myfile.txt
