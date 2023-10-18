@@ -95,6 +95,7 @@ pub mod sync;
 mod download_options;
 mod error;
 /// Contains objects as represented by Google, to be used for serialization and deserialization.
+pub mod metadata_token;
 mod resources;
 mod token;
 
