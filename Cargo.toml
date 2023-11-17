@@ -11,7 +11,7 @@ keywords = ["google", "cloud", "storage"]
 readme = "README.md"
 categories = ["api-bindings", "web-programming"]
 resolver = "2"
-publish = ["decthings-ab"]
+publish = false
 # maintenance = { status = "actively-developed" }
 
 [features]
